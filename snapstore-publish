@@ -20,7 +20,7 @@ PUSH_URL = DEVPORTAL + 'snap-push/'
 RELEASE_URL = DEVPORTAL + 'snap-release/'
 REFRESH_URL = SSO + 'v2/tokens/refresh'
 
-MACAROON_FILE = '.store-upload-macaroon.enc'
+MACAROON_FILE = '.snapstore-publish-macaroon.enc'
 
 
 class StoreException(Exception):
