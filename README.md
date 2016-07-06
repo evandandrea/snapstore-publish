@@ -1,4 +1,5 @@
 # snapstore-publish
 
-    $ MACAROON_SECRET=<redacted> snapstore-publish
-    usage: snapstore-publish [-h] --name [NAME] --series [SERIES] --channel [CHANNEL] FILE
+    $ export MACAROON_SECRET="You're not my supervisor"
+    $ macaroon-create > ~/.store-upload-macaroon.enc
+    $ snapstore-publish --name cassandra --series 16 --channel beta
