@@ -40,8 +40,9 @@ def get_caveat(macaroon):
 
 
 def get_discharge(caveat):
-    email = input('Email: ')
-    pw = getpass.getpass('Password: ')
+    print('Email: ', end='', file=sys.stderr)
+    email = input()
+    pw = getpass.getpass('Password: ', stream=sys.stderr)
 
     headers = {'Accept': 'application/json',
                'Content-Type': 'application/json'}
@@ -56,7 +57,8 @@ def get_discharge(caveat):
             need_otp = True
 
     if need_otp:
-        data['otp'] = getpass.getpass('One-time password: ')
+        data['otp'] = getpass.getpass('One-time password: ',
+                                      stream=sys.stderr)
         data = json.dumps(data)
         result = post(DISCHARGE_URL, data=data, headers=headers)
 
@@ -68,8 +70,6 @@ def encrypt(macaroon, discharge):
     from MACAROON_SECRET. Writes the encrypted macaroon to
     MACAROON_FILE
     '''
-    # TODO probably need to use save() from upload-to-store.
-    # stdout is already polluted with input() and getpass() lines.
     if 'MACAROON_SECRET' not in os.environ:
         m = 'MACAROON_SECRET not set in the environment.'
         raise RuntimeError(m)
