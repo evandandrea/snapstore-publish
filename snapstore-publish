@@ -252,7 +252,8 @@ def args():
     parser = argparse.ArgumentParser(description=desc)
     parser.add_argument('--name', nargs='?', required=True)
     parser.add_argument('--series', nargs='?', required=True)
-    parser.add_argument('--channel', nargs='?', action='append', required=True)
+    parser.add_argument('--channel', nargs='?', action='append',
+                        required=True)
     parser.add_argument('FILE')
     return parser.parse_args()
 
